@@ -1,10 +1,10 @@
 import React from 'react'
-import { Scope } from 'kreming'
+import { Scoped } from 'kremling'
 import styles from './index.krem.css'
 
 export default () => {
   return (
-    <Scope postcss={styles}>
+    <Scoped postcss={styles}>
       <header className='header'>
         <span>丙晟云商</span>
         <ul>
@@ -18,6 +18,6 @@ export default () => {
           <li>iSayid</li>
         </ul>
       </header>
-    </Scope>
+    </Scoped>
   )
 }

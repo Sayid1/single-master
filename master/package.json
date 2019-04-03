@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js -p"
+    "start:config": "webpack-dev-server --config ./webpack.config.dev.js --port 7000",
+    "start:deps": "webpack-dev-server --config ./webpack.config.deps.dev.js --port 7001",
+    "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "single-spa": "^4.2.0",

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.dev.js --port 7003"
+  },
   "dependencies": {
     "@reach/router": "^1.2.1",
     "kremling": "^1.2.4",

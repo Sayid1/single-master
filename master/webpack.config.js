@@ -1,48 +1,77 @@
+/* eslint-env node */
+const webpack = require('webpack')
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
-  mode: 'development',
-  entry: {
-    // Set the single-spa config as the project entry point
-    'single-spa.config': 'single-spa.config.js',
-  },
+  entry: './src/config.js',
   output: {
-    publicPath: '/dist/',
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'config.js',
+    library: 'config',
+    libraryTarget: 'amd',
+    path: path.resolve(__dirname, 'build'),
   },
+  mode: 'production',
   module: {
     rules: [
       {
-        // Webpack style loader added so we can use materialize
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }, {
-        test: /\.js$/,
+        test: /\.js?$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
-      }, {
-        // This plugin will allow us to use AngularJS HTML templates
-        test: /\.html$/,
-        exclude: /node_modules/,
-        loader: 'html-loader',
+      },
+      {
+        test: /\.css$/,
+        exclude: [path.resolve(__dirname, 'node_modules'), /\.krem.css$/],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              localIdentName: '[path][name]__[local]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [
+                  require('autoprefixer')
+                ];
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules')],
+        exclude: [/\.krem.css$/],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
-  node: {
-    fs: 'empty'
-  },
   resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
+    modules: [
+      __dirname,
+      'node_modules',
+    ],
   },
   plugins: [
-    // A webpack plugin to remove/clean the output folder before building
-    new CleanWebpackPlugin(['dist']),
+    new webpack.BannerPlugin({
+      banner: '"format amd";',
+      raw: true,
+    }),
+    CopyWebpackPlugin([
+      {from: path.resolve(__dirname, 'src/index.html')},
+      // {from: path.resolve(__dirname, 'src/styles.css')},
+    ]),
+    new CleanWebpackPlugin(['build']),
   ],
   devtool: 'source-map',
   externals: [
-    'singles-spa'
+    /^lodash$/,
+    /^single-spa$/,
+    /^rxjs\/?.*$/,
   ],
-  devServer: {
-    historyApiFallback: true
-  },
-  
 };
