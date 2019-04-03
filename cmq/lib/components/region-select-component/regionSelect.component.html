@@ -1,0 +1,9 @@
+<div class="dropdown">
+    <div class="city" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{$ctrl.regionName}}
+        <span class="caret"></span>
+    </div>
+    <ul class="dropdown-menu" aria-labelledby="dLabel">
+        <li class="regionLi" ng-click="$ctrl.select(city.regionCode, city.Region, city.lable)" ng-repeat="city in $ctrl.cityArr">{{city.lable}}</li>
+    </ul>
+</div>

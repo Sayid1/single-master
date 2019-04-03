@@ -8,7 +8,9 @@
     "build": "webpack --config webpack.config.js -p"
   },
   "dependencies": {
-    "single-spa": "^4.2.0"
+    "single-spa": "^4.2.0",
+    "sofe": "^2.1.4",
+    "systemjs": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

@@ -4264,6 +4264,11 @@ sockjs@0.3.19:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
 
+sofe@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/sofe/-/sofe-2.1.4.tgz#44c4e8dae938a3fde11475438d5928f4521754fe"
+  integrity sha1-RMTo2uk4o/3hFHVDjVko9FIXVP4=
+
 source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
@@ -4466,6 +4471,11 @@ supports-color@^6.1.0:
   integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
+
+systemjs@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-3.1.0.tgz#135f3e7a32e4f6f2d50b41e09a02d5ef8aa46633"
+  integrity sha512-91NK7BcuqGbfP/CjL4N3uaT+pupmNp7nCtEQr0gzCfn7SrpPpl6j0EIidLGnuO/E4NfWIDbQkTK2X2Pmdfw+kg==
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"

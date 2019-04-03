@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    window.sofeMainfest = {
+      sofe: {
+        mainfest: {
+          'header': 'http://localhost:7002/header.js',
+          // 'es': 'http://localhost:7003/es.js',
+          // 'cmq': 'http://localhost:7004/index.html'
+        }
+      }
+    }  
+  </script>
+  <!-- 加载公共js -->
+  <script src="http://localhost:7001/common-deps.js"></script>
+  <!-- 加载app -->
+  <script src="http://localhost:7001/config.js"></script>
+  <div id="header"></div>
+  <div id="cmq"></div>
+</body>
+</html>

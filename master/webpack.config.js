@@ -38,8 +38,11 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
   ],
   devtool: 'source-map',
-  externals: [],
+  externals: [
+    'singles-spa'
+  ],
   devServer: {
     historyApiFallback: true
-  }
+  },
+  
 };

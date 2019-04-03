@@ -3,6 +3,7 @@ node_modules
 
 # npm
 npm-debug.log
+./*/node_modules/
 package-lock.json
 .npm
 .history
