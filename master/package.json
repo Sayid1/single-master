@@ -4,29 +4,32 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "concurrently --kill-others --kill-others-on-fail --prefix name --names \"config,deps\" \"yarn start:config\" \"yarn start:deps\"",
     "start:config": "webpack-dev-server --config ./webpack.config.dev.js --port 7000",
     "start:deps": "webpack-dev-server --config ./webpack.config.deps.dev.js --port 7001",
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "single-spa": "^4.2.0",
-    "sofe": "^2.1.4",
-    "systemjs": "^3.1.0"
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "single-spa": "4.0.1",
+    "sofe": "2.1.4",
+    "systemjs": "0.20.19",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.4.2",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "clean-webpack-plugin": "^2.0.1",
-    "css-loader": "^2.1.1",
-    "html-loader": "^0.5.5",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "@babel/core": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "7.0.0",
+    "@babel/preset-env": "7.0.0",
+    "babel-core": "6.26.3",
+    "babel-loader": "8.0.0",
+    "clean-webpack-plugin": "0.1.19",
+    "concurrently": "4.0.1",
+    "copy-webpack-plugin": "4.5.2",
+    "css-loader": "1.0.0",
+    "style-loader": "0.23.0",
+    "webpack": "4.17.1",
+    "webpack-cli": "3.1.0",
+    "webpack-dev-server": "^3.1.14"
   }
 }

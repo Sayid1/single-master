@@ -9,20 +9,32 @@
 <body>
 
   <script>
-    window.sofeMainfest = {
+    window.sofeManifest = {
       sofe: {
-        mainfest: {
-          'header': 'http://localhost:7003/header.js',
-          // 'es': 'http://localhost:7003/es.js',
-          // 'cmq': 'http://localhost:7004/index.html'
+        manifest: {
+          'header': 'http://localhost:7003/header.js'
         }
       }
-    }  
+    }
+
+    // window.sofeManifest = {
+    //     sofe: {
+    //       manifest: {
+    //         "navbar": "http://localhost:8235/navbar.js",
+    //         // "people": "http://localhost:8236/people.js",
+    //         // "planets": "http://localhost:8237/planets.js",
+    //         // "fetchWithCache": "http://localhost:8238/fetchWithCache.js",
+    //       }
+    //     }
+    //   }
+    // 'header': 'http://localhost:7003/header.js'
   </script>
   <!-- 加载公共js -->
-  <script src="http://localhost:7002/common-deps.js"></script>
+  <script src="http://localhost:7001/common-deps.js"></script>
   <!-- 加载app -->
-  <script src="http://localhost:7001/config.js"></script>
+  <script>
+    SystemJS.import('http://localhost:7000/config.js')
+  </script>
   <div id="header"></div>
   <div id="cmq"></div>
 </body>

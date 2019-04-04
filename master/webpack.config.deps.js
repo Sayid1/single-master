@@ -1,6 +1,5 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/common-deps.js',
@@ -28,7 +27,7 @@ module.exports = {
   },
   devtool: 'sourcemap',
   plugins: [
-    new CleanWebpackPlugin(['build/common-deps/']),
+    new CleanWebpackPlugin(),
     // CopyWebpackPlugin([
     //   {from: path.resolve(__dirname, 'src/common-deps.js')}
     // ]),

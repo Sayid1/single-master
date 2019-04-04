@@ -9,3 +9,7 @@ export const header = () => true
 export const es = location => prefix(location, 'es')
 
 export const cmq = location => prefix(location, 'cmq')
+
+export function navbar(location) {
+  return true
+}

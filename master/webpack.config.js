@@ -62,11 +62,11 @@ module.exports = {
       banner: '"format amd";',
       raw: true,
     }),
-    CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       {from: path.resolve(__dirname, 'src/index.html')},
       // {from: path.resolve(__dirname, 'src/styles.css')},
     ]),
-    new CleanWebpackPlugin(['build']),
+    new CleanWebpackPlugin(),
   ],
   devtool: 'source-map',
   externals: [
