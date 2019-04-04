@@ -4,9 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --kill-others --kill-others-on-fail --prefix name --names \"config,deps\" \"yarn start:config\" \"yarn start:deps\"",
-    "start:config": "webpack-dev-server --config ./webpack.config.dev.js --port 7000",
-    "start:deps": "webpack-dev-server --config ./webpack.config.deps.dev.js --port 7001",
+    "start": "concurrently --kill-others --kill-others-on-fail --prefix name --names \"config,deps,header,slider,app3\" \"yarn start:config\" \"yarn start:deps\" \"yarn start:header\" \"yarn start:slider\" \"yarn start:app3\"",
+    "start:config": "webpack-dev-server --config ./webpack.config.dev.js --port 7001",
+    "start:deps": "webpack-dev-server --config ./webpack.config.deps.dev.js --port 7002",
+    "start:header": "cd ./header && webpack-dev-server --config ./webpack.config.dev.js --port 7003",
+    "start:slider": "cd ./slider && webpack-dev-server --config ./webpack.config.dev.js --port 7004",
+    "start:app3": "cd ./app3 && webpack-dev-server --config ./webpack.config.js --port 7005",
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
