@@ -1,38 +1,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import singleSpaReact from 'single-spa-react'
-import Header from './root.component'
-
+import Slider from './root.component'
 
 const domElementGetter = () => {
-  let el = document.getElementById('header')
+  let el = document.querySelector('#slider')
   if (!el) {
     el = document.createElement('div')
-    el.id = 'header'
+    el.id = 'slider'
     document.getElementById('container').appendChild(el)
   }
   return el
 }
 
-const reactLifecycles = singleSpaReact({
+const reactLifecycle = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Header,
+  rootComponent: Slider,
   domElementGetter
 })
 
 export const bootstrap = [
-  reactLifecycles.bootstrap,
+  reactLifecycle.bootstrap
 ]
 
 export const mount = [
-  reactLifecycles.mount,
+  reactLifecycle.mount
 ]
 
 export const unmount = [
-  reactLifecycles.unmount,
+  reactLifecycle.unmount
 ]
 
 export const unload = [
-  reactLifecycles.unload,
-]
+  reactLifecycle.unload
+] 

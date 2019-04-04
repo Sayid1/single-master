@@ -1,10 +1,9 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.dev.js --port 7003",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js --port 7004",
     "build": "webpack --config ./webpack.config.js -p"
   },
   "dependencies": {
-    "@reach/router": "^1.2.1",
     "kremling": "^1.2.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

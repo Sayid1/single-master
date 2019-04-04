@@ -56,7 +56,7 @@ module.exports = {
           {
             loader: 'kremling-loader',
             options: {
-              namespace: 'app-dashboard-ui',
+              namespace: 'app-header',
               postcss: {
                 plugins: {
                   'autoprefixer': {}
@@ -79,17 +79,15 @@ module.exports = {
       banner: '"format amd";',
       raw: true,
     }),
-    new CleanWebpackPlugin(['build/navbar']),
+    new CleanWebpackPlugin(['build/header']),
   ],
   devtool: 'source-map',
   externals: [
-    /^lodash$/,
     /^single-spa$/,
     /^react$/,
     /^react\/lib.*/,
     /^react-dom$/,
     /.*react-dom.*/,
-    /^rxjs\/?.*$/,
   ],
 };
 

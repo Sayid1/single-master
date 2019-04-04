@@ -1,4 +1,21 @@
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(44, 48, 58);
+  height: 60px;
+  color: white;
+  padding: 0 20px 0 40px;
+}
+.brand {
+  margin-right: 19%;
+}
+.md, .right {
+  display: flex;
+}
+.md {
+  flex: 1;
+}
+.md li, .right li {
+  margin-right: 50px;
 }

@@ -6,10 +6,6 @@ export const prefix = (location, ...prefixs) => {
 
 export const header = () => true
 
-export const es = location => prefix(location, 'es')
+export const slider = () => true
 
-export const cmq = location => prefix(location, 'cmq')
-
-export function navbar(location) {
-  return true
-}
+export const app3 = location => prefix(location, 'app3')
