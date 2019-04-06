@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
@@ -21,14 +22,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [path.resolve(__dirname, 'node_modules'), /\.krem.css$/],
+        exclude: [path.resolve(__dirname, 'node_modules')],
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[path][name]__[local]',
+              localIdentName: 'app-header__[local]',
             },
           },
           {
@@ -36,35 +37,12 @@ module.exports = {
             options: {
               plugins() {
                 return [
-                  require('autoprefixer')
+                  require('autoprefixer'),
                 ];
               },
             },
           },
         ],
-      },
-      {
-        test: /\.css$/,
-        include: [path.resolve(__dirname, 'node_modules')],
-        exclude: [/\.krem.css$/],
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.krem.css$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
-        use: [
-          {
-            loader: 'kremling-loader',
-            options: {
-              namespace: 'app-header',
-              postcss: {
-                plugins: {
-                  'autoprefixer': {}
-                }
-              }
-            },
-          },
-        ]
       },
     ],
   },

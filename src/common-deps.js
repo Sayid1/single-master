@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import SystemJS from 'systemjs'
 
 SystemJS.config(window.sofeManifest)

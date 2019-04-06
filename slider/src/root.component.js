@@ -1,5 +1,6 @@
 import React from 'react'
-import './index.krem.css'
+import { Link } from '@reach/router'
+import styles from './index.css'
 
 const routes = [{
   id: 1,
@@ -37,7 +38,7 @@ const routes = [{
 
 const Parent = ({route}) => {
   return (
-    <ul>
+    <ul className={styles.slider}>
         {
           route.map(route => {
             return <Menu key={route.id} route={route}></Menu>
@@ -47,19 +48,37 @@ const Parent = ({route}) => {
   )
 }
 
-const Menu = ({route}) => {
-  
-  if (route.children) {
-    return (
-      <>
-        <li>{route.name}</li>
-        <Parent route={route.children}></Parent>
-      </>
-    )
+class Menu extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.parentRef = React.createRef()
   }
-  return <li><a href={route.url}>{route.name}</a></li>
+
+  zk = () => {
+    const display = this.parentRef.current.nextSibling.style.display
+    this.parentRef.current.nextSibling.style.display = display === 'block' ? 'none' : 'block'
+  }
+
+  render() {
+    const { route } = this.props
+    if (route.children) {
+      return (
+        <>
+          <li ref={this.parentRef} className={styles.parent} onClick={this.zk}>
+            <span>{route.name}</span>
+            <span>展开</span>
+          </li>
+          <Parent route={route.children}></Parent>
+        </>
+      )
+    }
+    return <li className={styles.child}><Link to={route.url}>{route.name}</Link></li>
+  }
 }
 
+
 export default () => {
-  return <Parent route={routes}></Parent>
+  return <Parent route={routes} />
 }

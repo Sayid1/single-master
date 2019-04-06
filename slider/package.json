@@ -4,7 +4,7 @@
     "build": "webpack --config ./webpack.config.js -p"
   },
   "dependencies": {
-    "kremling": "^1.2.4",
+    "@reach/router": "^1.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "single-spa-react": "^2.9.0"
@@ -16,13 +16,12 @@
     "@babel/plugin-syntax-dynamic-import": "7.0.0",
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "autoprefixer": "9.1.5",
-    "babel-core": "6.26.3",
+    "autoprefixer": "^9.5.0",
     "babel-loader": "8.0.0",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "1.0.0",
-    "kremling-loader": "0.1.1",
     "postcss-loader": "3.0.0",
+    "postcss-prefixer": "^2.1.1",
     "style-loader": "0.23.0",
     "webpack": "4.17.1",
     "webpack-cli": "3.1.0",

@@ -19,6 +19,8 @@
     "postinstall": "node postinstall.js"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "single-spa": "4.0.1",
@@ -29,8 +31,10 @@
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@babel/plugin-syntax-dynamic-import": "7.0.0",
-    "@babel/preset-env": "7.0.0",
-    "babel-core": "6.26.3",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-stage-0": "^7.0.0",
+    "autoprefixer": "^9.5.0",
     "babel-loader": "8.0.0",
     "clean-webpack-plugin": "0.1.19",
     "concurrently": "4.0.1",
