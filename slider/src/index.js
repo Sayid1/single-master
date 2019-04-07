@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import singleSpaReact from 'single-spa-react'
 import Slider from './root.component'
+import http from 'http!sofe'
 
 const domElementGetter = () => {
   let el = document.querySelector('#slider')

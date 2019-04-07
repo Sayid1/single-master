@@ -61,6 +61,7 @@ module.exports = {
   ],
   devtool: 'source-map',
   externals: [
+    /^.+!sofe$/,
     /^single-spa$/,
     /^react$/,
     /^react\/lib.*/,

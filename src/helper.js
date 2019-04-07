@@ -2,7 +2,7 @@ import * as singleSpa from 'single-spa'
 
 export const hashPrefix = prefix => location => location.hash.startsWith(`#${prefix}`)
 
-export async const loadApp = (name, hash, appURL, storeURL, globalEventDistributor) => {
+export async function loadApp (name, hash, appURL, storeURL, globalEventDistributor) {
     let storeModule = {}
     let customProps = { globalEventDistributor }
 

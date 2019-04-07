@@ -5,4 +5,4 @@ const instance = axios.create({
   timeout: 1000,
 })
 
-export const $http = instance
+export default instance
