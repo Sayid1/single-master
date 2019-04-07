@@ -21,7 +21,6 @@
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "1.0.0",
     "postcss-loader": "3.0.0",
-    "postcss-prefixer": "^2.1.1",
     "style-loader": "0.23.0",
     "webpack": "4.17.1",
     "webpack-cli": "3.1.0",
