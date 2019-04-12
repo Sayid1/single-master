@@ -1,23 +1,33 @@
-/* eslint-env node */
-const webpack = require('webpack')
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: {
+    slider: './src/index.js'
+  },
   output: {
-    filename: 'slider.js',
+    filename: '[name].js',
     library: 'slider',
     libraryTarget: 'amd',
-    path: path.resolve(__dirname, 'build/header'),
+    path: path.resolve(__dirname, 'build'),
+    chunkFilename: 'slider/[name].[hash].js'
   },
   mode: 'production',
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+            loaders: {
+                js: 'babel-loader'
+            }
+        }
+      },
+      {
+        test: /\.js$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
-        loader: 'babel-loader',
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
@@ -28,44 +38,72 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: 'app-slider__[local]'
-            }
+              localIdentName: 'slider__[local]--[hash:base64:5]',
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins() {
                 return [
-                  require('autoprefixer'),
+                  require('autoprefixer')
                 ];
               },
             },
           },
         ],
       },
-    ],
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: 'slider__[local]--[hash:base64:5]',
+            },
+          },
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [
+                  require('autoprefixer')
+                ];
+              },
+            },
+          },
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+            name: '[name].[ext]?[hash]',
+            // publicPath: '/appVue/',
+        }
+      },
+    ]
   },
   resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    extensions: [
+      ".js", ".vue"
+    ],
     modules: [
       __dirname,
       'node_modules',
     ],
   },
   plugins: [
-    new webpack.BannerPlugin({
-      banner: '"format amd";',
-      raw: true,
-    }),
-    new CleanWebpackPlugin(['build/slider']),
+    new VueLoaderPlugin(),
   ],
   devtool: 'source-map',
   externals: [
-    /^.+!sofe$/,
-    /^single-spa$/,
-    /^react$/,
-    /^react\/lib.*/,
-    /^react-dom$/,
-    /.*react-dom.*/,
-  ],
-};
-
+    /^sing-spa-vue$/,
+  ]
+}

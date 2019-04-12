@@ -20,19 +20,14 @@ const reactLifecycles = singleSpaReact({
   rootComponent: Header,
   domElementGetter
 })
+export function bootstrap(props) {
+	return reactLifecycles.bootstrap(props);
+}
 
-export const bootstrap = [
-  reactLifecycles.bootstrap,
-]
+export function mount(props) {
+	return reactLifecycles.mount(props);
+}
 
-export const mount = [
-  reactLifecycles.mount,
-]
-
-export const unmount = [
-  reactLifecycles.unmount,
-]
-
-export const unload = [
-  reactLifecycles.unload,
-]
+export function unmount(props) {
+	return reactLifecycles.unmount(props);
+}

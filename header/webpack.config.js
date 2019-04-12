@@ -1,16 +1,19 @@
 /* eslint-env node */
 const webpack = require('webpack')
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: {
+    header: './src/index.js'
+  },
   output: {
-    filename: 'header.js',
+    filename: '[name].js',
     library: 'header',
     libraryTarget: 'amd',
-    path: path.resolve(__dirname, 'build/header'),
+    path: path.resolve(__dirname, 'build'),
+    chunkFilename: '[name].[hash].js'
   },
   mode: 'production',
   module: {
@@ -62,11 +65,6 @@ module.exports = {
   devtool: 'source-map',
   externals: [
     /^.+!sofe$/,
-    /^single-spa$/,
-    /^react$/,
-    /^react\/lib.*/,
-    /^react-dom$/,
-    /.*react-dom.*/,
   ],
 };
 

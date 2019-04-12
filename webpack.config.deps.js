@@ -18,19 +18,12 @@ module.exports = {
       'node_modules',
     ],
     alias: {
-      // Only put things in here when webpack isn't already doing the "right" thing for performance by default.
-      // This is usually when there is a preminified file that the npm package publishes but webpack doesn't know
-      // it should use.
-      lodash: path.resolve(__dirname, 'node_modules/lodash/lodash.min.js'),
       systemjs: path.resolve(__dirname, 'node_modules/systemjs/dist/system.js'),
     }
   },
   devtool: 'sourcemap',
   plugins: [
-    new CleanWebpackPlugin(),
-    // CopyWebpackPlugin([
-    //   {from: path.resolve(__dirname, 'src/common-deps.js')}
-    // ]),
+    new CleanWebpackPlugin()
   ],
   module: {
     rules: [
@@ -40,7 +33,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         }
-      }
+      },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader'},
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
     ]
   }
 }

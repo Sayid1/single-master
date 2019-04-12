@@ -1,38 +1,41 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import singleSpaReact from 'single-spa-react'
-import Slider from './root.component'
-import http from 'http!sofe'
+import Vue from 'vue'
+import ElementUI  from 'element-ui'
+import singleSpaVue from 'single-spa-vue'
+import App from './App.vue'
 
-const domElementGetter = () => {
-  let el = document.querySelector('#slider')
+Vue.use(ElementUI )
+Vue.config.productionTip = false;
+
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    el: '#slider',
+    render: h => h(App),
+  }
+});
+
+export const bootstrap = [
+  vueLifecycles.bootstrap,
+]
+
+export function mount(props) {
+  createDomElement()
+  return vueLifecycles.mount({
+    ...props
+  })
+}
+
+export const unmount = [
+  vueLifecycles.unmount,
+]
+
+function createDomElement() {
+  let el = document.getElementById('slider')
+
   if (!el) {
     el = document.createElement('div')
     el.id = 'slider'
-    document.getElementById('container').appendChild(el)
+    document.body.appendChild(el)
   }
   return el
 }
-
-const reactLifecycle = singleSpaReact({
-  React,
-  ReactDOM,
-  rootComponent: Slider,
-  domElementGetter
-})
-
-export const bootstrap = [
-  reactLifecycle.bootstrap
-]
-
-export const mount = [
-  reactLifecycle.mount
-]
-
-export const unmount = [
-  reactLifecycle.unmount
-]
-
-export const unload = [
-  reactLifecycle.unload
-] 

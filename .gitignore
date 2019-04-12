@@ -4,6 +4,7 @@ node_modules
 # npm
 npm-debug.log
 ./*/node_modules/
+./*/build
 package-lock.json
 .npm
 .history

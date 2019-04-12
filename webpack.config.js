@@ -1,8 +1,9 @@
 /* eslint-env node */
 const webpack = require('webpack')
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
   entry: './src/config.js',
@@ -13,6 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
   },
   mode: 'production',
+  node: {
+    fs: 'empty',
+  },
   module: {
     rules: [
       {
@@ -22,21 +26,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
         use: [
-          'style-loader',
-          'css-loader',
           {
-            loader: 'postcss-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              plugins() {
-                return [
-                  require('autoprefixer')
-                ];
-              },
+              publicPath: '../'
             },
           },
+          'css-loader'
         ],
+      },
+      { 
+        test: /\.(eot|svg|ttf|woff|woff2)$/, 
+        loader: 'file-loader',
+        options: {
+          name: 'css/[name].[ext]'
+        }
       },
     ],
   },
@@ -45,8 +50,12 @@ module.exports = {
       __dirname,
       'node_modules',
     ],
+    alias: {
+      systemjs: path.resolve(__dirname, 'node_modules/systemjs/dist/system.js'),
+    }
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.BannerPlugin({
       banner: '"format amd";',
       raw: true,
@@ -55,7 +64,10 @@ module.exports = {
       {from: path.resolve(__dirname, 'src/index.html')},
       {from: path.resolve(__dirname, 'src/styles.css')},
     ]),
-    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+      chunkFilename: "[id].css"
+    })
   ],
   devtool: 'source-map',
   externals: [

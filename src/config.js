@@ -1,20 +1,37 @@
 import * as singleSpa from 'single-spa'
-import * as isActive from './activityFns.js'
-import GlobalEventDistributor from './globalEventDistributor'
 import { loadApp } from './helper'
-
-
-singleSpa.registerApplication('header', SystemJS.import('header!sofe'), isActive.header)
-singleSpa.registerApplication('slider', SystemJS.import('slider!sofe'), isActive.slider)
-singleSpa.registerApplication('app3', SystemJS.import('app3!sofe'), isActive.app3)
-
+import 'element-ui/lib/theme-chalk/index.css'
+import { storeInstance } from './globalStore'
 
 async function init() {
-    const globalEventDistributor = new GlobalEventDistributor()
-    const loadingPromise = []
+  const loadingPromise = []
 
-    loadingPromise.push(loadApp('header', '/header', '/app-header/header.js', '/app-header/store.js', globalEventDistributor))
+  loadingPromise.push(loadApp('header', true, '/header.js'))
+  loadingPromise.push(loadApp('es', 'es', '/es.js'))
+  loadingPromise.push(loadApp('cloudServer', 'cloudServer', '/cloudServer.js'))
+  loadingPromise.push(loadApp('parcelUtils', 'parcelUtils', '/parcelUtils.js'))
+  loadingPromise.push(loadApp('slider', true, '/slider.js'))
 
+  await Promise.all(loadingPromise)
+  singleSpa.start()
+}
+init()
+
+let hash
+
+function inheritRoute() {
+  // const vm = storeInstance.getState().vm
+  const uri = window.location.hash
+  const currentHash = uri.match(/(#\/.*?\/)/)[1] // eg: #/xx/
+
+  if (hash !== currentHash) {
+    hash = currentHash
+    return
+  }
+  let newRoute = uri.replace(currentHash, '/')
+  storeInstance.getState().vm._router.replace(newRoute)
 }
 
-singleSpa.start()
+window.onhashchange = (e) => {
+  inheritRoute()
+}

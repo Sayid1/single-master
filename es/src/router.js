@@ -1,33 +1,26 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
+  mode:'history',
+  base: '#/es',
   routes: [
-    {
-      path: '/',
-      redirect: '/es',
-    },
     {
       path: '/es',
       name: 'es',
-      component: () => import(/* webpackChunkName: "es" */ './views/ES'),
+      component: () => import(/* webpackChunkName: "es.list" */ './pages/es.vue'),
     },
-    {
-      path: '/es-add',
-      name: 'es-add',
-      component: () => import(/* webpackChunkName: "es.add" */ './views/ES-add'),
-    },
+    // {
+    //   path: '/es-add',
+    //   name: 'es-add',
+    //   component: () => import(/* webpackChunkName: "add" */ './pages/es-add.vue'),
+    // },
     {
       path: '/esmonitor',
       name: 'esmonitor',
-      component: () => import(/* webpackChunkName: "es.monitor" */ './views/ES-monitor'),
+      component: () => import(/* webpackChunkName: "es.monitor" */ './pages/esmonitor.vue'),
     },
-    {
-      path: '/details',
-      name: 'details',
-      component: () => import(/* webpackChunkName: "es.monitor" */ './views/ES-monitor/details'),
-    },
-  ],
-});
+  ]
+})

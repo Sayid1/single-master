@@ -7,32 +7,26 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <script>
-    window.sofeManifest = {
-      sofe: {
-        manifest: {
-          'header': 'http://localhost:7003/header.js',
-          'slider': 'http://localhost:7004/slider.js',
-          'app3': 'http://localhost:7005/singleSpaEntry.js',
-          'http': 'http://localhost:7777/axios.js'
-        }
-      }
-    }
-  </script>
   <!-- 加载公共js -->
   <script src="http://localhost:7002/common-deps.js"></script>
   <!-- 加载app -->
   <script>
     SystemJS.import('http://localhost:7001/config.js')
   </script>
+  <script>
+  // SystemJS.import('/appVue/appVue.js').then(App => {
+  //   const domElement = document.body
+  //   // App2MountProps.mountParcel(App.AddContactParcel, {domElement})
+  //   // console.log(App.LoadingParcel)
+  // })
+  </script>
   <div id="header"></div>
   <main id="container">
     <div id="slider"></div>
-    <div id="app"></div>
   </main>
 </body>
 </html>

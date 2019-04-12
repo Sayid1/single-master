@@ -1,22 +1,23 @@
 import * as singleSpa from 'single-spa'
+import GlobalEventDistributor from './globalEventDistributor'
+import { storeInstance } from './globalStore'
 
-export const hashPrefix = prefix => location => location.hash.startsWith(`#${prefix}`)
+const globalEventDistributor = new GlobalEventDistributor()
 
-export async function loadApp (name, hash, appURL, storeURL, globalEventDistributor) {
-    let storeModule = {}
-    let customProps = { globalEventDistributor }
+export const hashPrefix = prefix => location => location.hash.startsWith(`#/${prefix}`)
 
-    try {
-        storeModule = storeURL ? await SystemJS.import(storeURL) : {storeInstance: null}
-    } catch (e) {
-        console.error(`could not load store of app ${name}.`, e)
-    }
+export async function loadApp(name, hash, appURL) {
+  let customProps = {
+    globalEventDistributor
+  }
 
-    if(storeModule.storeInstance && globalEventDistributor) {
-        customProps.store = storeModule.storeInstance
+  // if (storeModule.storeInstance && globalEventDistributor) {
+    customProps.store = storeInstance
 
-        globalEventDistributor.registerStore(storeModule.storeInstance)
-    }
-
+    globalEventDistributor.registerStore(storeInstance)
+  // }
+  if (hash === true)
+    singleSpa.registerApplication(name, () => SystemJS.import(appURL), () => () => true, customProps)
+  else
     singleSpa.registerApplication(name, () => SystemJS.import(appURL), hashPrefix(hash), customProps)
 }

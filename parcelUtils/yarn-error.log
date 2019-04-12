@@ -1,0 +1,66 @@
+Arguments: 
+  E:\nodejs\node.exe C:\Users\iSayi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files (x86)\Common Files\NetSarang;C:\Program Files (x86)\Lenovo\FusionEngine;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;D:\Python27;C:\Users\iSayi\AppData\Local\Yarn\bin;d:\Microsoft VS Code\bin;E:\nodejs\;D:\Git\cmd;D:\Java\jdk;d:\Microsoft VS Code\bin;C:\Users\iSayi\AppData\Local\Microsoft\WindowsApps;C:\Users\iSayi\AppData\Roaming\npm;D:\Java\jdk;
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  10.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: E:\vscode_space\bs\parcelUtils\package.json: Unexpected token } in JSON at position 353
+      at JSON.parse (<anonymous>)
+      at C:\Users\iSayi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\iSayi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:304:30)
+      at C:\Users\iSayi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "parcel-utils",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "axios": "^0.18.0",
+      "element-ui": "^2.7.2",
+      "single-spa-vue": "^1.3.0",
+      "vue": "^2.6.10",
+    },
+    "devDependencies": {
+      "@babel/core": "^7.4.3",
+      "@babel/plugin-syntax-dynamic-import": "7.0.0",
+      "@vue/cli-plugin-babel": "^3.5.5",
+      "@vue/cli-service": "^3.5.3",
+      "babel-loader": "^8.0.5",
+      "clean-webpack-plugin": "^2.0.1",
+      "css-loader": "^2.1.1",
+      "file-loader": "^3.0.1",
+      "node-sass": "^4.11.0",
+      "postcss-loader": "^3.0.0",
+      "sass-loader": "^7.1.0",
+      "style-loader": "^0.23.1",
+      "vue-loader": "^15.7.0",
+      "vue-template-compiler": "^2.6.10",
+      "webpack": "^4.29.6",
+      "webpack-cli": "^3.3.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

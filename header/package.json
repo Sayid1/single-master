@@ -1,12 +1,14 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.dev.js --port 7003",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.js -p"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "single-spa-react": "^2.9.0"
   },
   "devDependencies": {
@@ -20,8 +22,11 @@
     "babel-loader": "8.0.0",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "1.0.0",
+    "dotenv-defaults": "^1.0.2",
+    "dotenv-webpack": "^1.7.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "node-notifier": "^5.4.0",
     "postcss-loader": "3.0.0",
-    "postcss-prefixer": "^2.1.1",
     "style-loader": "0.23.0",
     "webpack": "4.17.1",
     "webpack-cli": "3.1.0",
