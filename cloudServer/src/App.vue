@@ -1,5 +1,5 @@
 <template>
-  <div id="app1">
+  <div id="cloudServer">
     CLOUD-SERVER
     <router-view></router-view>
   </div>

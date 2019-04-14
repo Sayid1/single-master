@@ -1,5 +1,5 @@
 <template>
-  <div class='es'>
+  <div>
     <div :class="$style.nav">
       <h1 :class="$style.h1">云服务器列表</h1>
       <div ref="parcel"></div>

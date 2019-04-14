@@ -12,15 +12,15 @@ config.plugins.push(new FriendlyErrorsWebpackPlugin({
   },
   onErrors: (severity, errors) => {
     if (severity !== 'error') {
-      return;
+      return
     }
-    const error = errors[0];
+    const error = errors[0]
     notifier.notify({
       title: "Webpack error",
       message: severity + ': ' + error.name,
       subtitle: error.file || '',
       // icon: ICON
-    });
+    })
   }
 }))
 

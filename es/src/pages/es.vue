@@ -4,15 +4,17 @@
     <div :class="$style.nav">
       <h1 :class="$style.h1">集群列表</h1>
       <div ref="parcel"></div>
+      <div ref="parcel1"></div>
     </div>
     <div class="main-content">
       <Cities :cities="cities" />
       <div class="actions">
         <el-row type="flex" justify="space-between" align="middle">
           <router-link to="es-add"><el-button size="small" type="primary">新建</el-button></router-link>
+          {{user}}
           <div :class="$style.searh">
             <el-input placeholder="请输入实例名、实例ID">
-              <el-button slot="append" icon="el-icon-search" @click="xhr">快点{{a}}我</el-button>
+              <el-button slot="append" icon="el-icon-search" @click="xhr">xhr</el-button>
             </el-input>
           </div>
         </el-row>
@@ -24,11 +26,12 @@
 
 <script>
 import Cities from '../components/Cities'
-import { axiosInstance, ParcelButton } from 'parcelUtils!sofe'
+import { axiosInstance, ParcelButton, ParcelInput } from 'parcelUtils!sofe'
 
 export default {
   data() {
     return {
+      ...this.mapState('user'),
       cities: ['北京', '上海', '深圳', '广州'],
       a: 1,
       vm: null
@@ -40,7 +43,7 @@ export default {
   mounted() {
     ParcelButton.mount({
       domElement: this.$refs.parcel,
-      globalEventDistributor: this.$root.globalEventDistributor,
+      store: this.reduxStore,
       aa: this.a,
       click:() =>{
         this.vm.aa = 3
@@ -48,11 +51,12 @@ export default {
     }).then(vm => {
       this.vm = vm
     })
+
+    ParcelInput.mount({domElement: this.$refs.parcel1})
   },
   methods: {
     xhr() {
-      this.vm.aa = 2
-      // axiosInstance.get('test').then(res => console.log(res))
+      axiosInstance.get('test').then(res => this.vm.aa = 2)
     }
   }
 }

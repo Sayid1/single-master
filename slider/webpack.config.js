@@ -47,7 +47,7 @@ module.exports = {
               plugins() {
                 return [
                   require('autoprefixer')
-                ];
+                ]
               },
             },
           },
@@ -71,7 +71,7 @@ module.exports = {
               plugins() {
                 return [
                   require('autoprefixer')
-                ];
+                ]
               },
             },
           },
@@ -88,9 +88,9 @@ module.exports = {
     ]
   },
   resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    },
+    // alias: {
+    //   'vue$': 'vue/dist/vue.esm.js'
+    // },
     extensions: [
       ".js", ".vue"
     ],

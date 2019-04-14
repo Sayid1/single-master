@@ -2,28 +2,58 @@ import Vue from 'vue'
 import axios from 'axios'
 import singleSpaVue from 'single-spa-vue'
 import ElementUI from 'element-ui'
-import ParcelBtn from './components/HelloWord'
+import { connect } from 'redux-vuex'
+import ParcelBtn from './components/ParcelButton'
+import ParcelInp from './components/ParcelInput'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI) // TODO 按需加载
+Vue.config.productionTip = false
 
-const parcelLifecycles = singleSpaVue({
+const parceButtonlLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     render: h => h(ParcelBtn)
   },
 })
+const ParcelInputlLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render: h => h(ParcelInp)
+  },
+})
 
-
-function mount(props) {
-  return parcelLifecycles.mount({
-    ...props,
-  })
-}
 
 const ParcelButton = {
-  bootstrap: parcelLifecycles.bootstrap,
-  mount,
-  unmount: parcelLifecycles.unmount
+  bootstrap: parceButtonlLifecycles.bootstrap,
+  mount: props => {
+    connect({
+      Vue,
+      store: props.store
+    })
+    return parceButtonlLifecycles.mount({
+      ...props,
+    })
+  },
+  unmount: parceButtonlLifecycles.unmount
+}
+const ParcelInput = {
+  bootstrap: ParcelInputlLifecycles.bootstrap,
+  mount: props => ParcelInputlLifecycles.mount({
+    ...props,
+  }),
+  unmount: ParcelInputlLifecycles.unmount
+}
+
+// const initParcelLifecycles = singleSpaVue({
+//   Vue
+// })
+
+const ParcelInput = {
+  bootstrap: ParcelInputlLifecycles.bootstrap,
+  mount: props => ParcelInputlLifecycles.mount({
+    ...props,
+  }),
+  unmount: ParcelInputlLifecycles.unmount
 }
 
 const axiosInstance = axios.create({
@@ -54,4 +84,6 @@ axiosInstance.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
-export { axiosInstance, ParcelButton }
+const Loading = ElementUI.Loading
+
+export { axiosInstance, ParcelButton, ParcelInput, Loading }

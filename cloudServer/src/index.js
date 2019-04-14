@@ -4,24 +4,21 @@ import ElementUI  from 'element-ui'
 import singleSpaVue from 'single-spa-vue'
 import App from './App.vue'
 import router from './router'
-import './pages/cloud-host.vue'
-import './pages/cloud-host-add.vue'
-import './pages/mirror-image.vue'
 
-Vue.use(ElementUI)
-Vue.config.productionTip = false;
+Vue.use(ElementUI) // TODO 按需加载
+Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
-    el: '#app1',
+    el: '#cloudServer',
     router,
     render: h => h(App),
     mounted() {
       router.replace(window.location.hash.replace('#/cloudServer', ''))
     }
   }
-});
+})
 
 export const bootstrap = [
   vueLifecycles.bootstrap,
@@ -52,11 +49,11 @@ export const unmount = [
 ]
 
 function createDomElement() {
-  let el = document.getElementById('app1')
+  let el = document.getElementById('cloudServer')
 
   if (!el) {
     el = document.createElement('div')
-    el.id = 'app1'
+    el.id = 'cloudServer'
     document.getElementById('container').appendChild(el)
   }
   return el

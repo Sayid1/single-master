@@ -38,7 +38,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: 'slider__[local]--[hash:base64:5]',
+              localIdentName: 'cloud-server__[local]--[hash:base64:5]',
             },
           },
           {
@@ -47,7 +47,7 @@ module.exports = {
               plugins() {
                 return [
                   require('autoprefixer')
-                ];
+                ]
               },
             },
           },
@@ -61,7 +61,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: 'slider__[local]--[hash:base64:5]',
+              localIdentName: 'cloud-server-[local]--[hash:base64:5]',
             },
           },
           'sass-loader',
@@ -71,7 +71,7 @@ module.exports = {
               plugins() {
                 return [
                   require('autoprefixer')
-                ];
+                ]
               },
             },
           },
@@ -88,9 +88,6 @@ module.exports = {
     ]
   },
   resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    },
     extensions: [
       ".js", ".vue"
     ],
@@ -105,6 +102,7 @@ module.exports = {
   devtool: 'source-map',
   externals: [
     /^sing-spa-vue$/,
+    /\!sofe$/,
     // /.*element-ui.*$/
   ]
 }

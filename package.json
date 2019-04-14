@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "add-all": "pkg=$pkg dep=$dep npm run add:es",
+    "add:es": "cd ./es/ && npm i $pkg -$dep",
     "install-all": "npm run install:config && npm run install:header && npm run install:slider && npm run install:cloudServer && npm run install:es && npm run install:parcelUtils",
     "install:config": "npm i",
     "install:header": "cd ./header/ && npm i",

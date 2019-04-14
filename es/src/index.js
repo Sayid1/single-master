@@ -5,24 +5,20 @@ import { connect } from 'redux-vuex'
 import App from './App.vue'
 import router from './router'
 
-console.log(process.env.BASE_URL)
-console.log(process.env.NODE_ENV)
-console.log(process.env.DEF)
-
-Vue.use(ElementUI)
-Vue.config.productionTip = false;
+Vue.use(ElementUI) // TODO 按需加载
+Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
-    el: '#app2',
+    el: '#es',
     router,
     render: h => h(App),
     mounted() {
       router.replace(location.hash.replace('#/es', ''))
     }
   }
-});
+})
 
 export const bootstrap = [
   vueLifecycles.bootstrap,
@@ -51,11 +47,11 @@ export const unmount = [
 ]
 
 function createDomElement() {
-  let el = document.getElementById('app2')
+  let el = document.getElementById('es')
 
   if (!el) {
     el = document.createElement('div')
-    el.id = 'app2'
+    el.id = 'es'
     document.getElementById('container').appendChild(el)
   }
   return el

@@ -72,5 +72,6 @@ module.exports = {
   devtool: 'source-map',
   externals: [
     /^single-spa$/,
+    /\!sofe$/,
   ],
-};
+}

@@ -41,7 +41,7 @@ module.exports = {
               plugins() {
                 return [
                   require('autoprefixer'),
-                ];
+                ]
               },
             },
           },
@@ -66,5 +66,4 @@ module.exports = {
   externals: [
     /^.+!sofe$/,
   ],
-};
-
+}

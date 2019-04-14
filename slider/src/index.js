@@ -4,7 +4,7 @@ import singleSpaVue from 'single-spa-vue'
 import App from './App.vue'
 
 Vue.use(ElementUI )
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({
   Vue,
@@ -12,7 +12,7 @@ const vueLifecycles = singleSpaVue({
     el: '#slider',
     render: h => h(App),
   }
-});
+})
 
 export const bootstrap = [
   vueLifecycles.bootstrap,
