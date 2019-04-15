@@ -46,7 +46,7 @@ config.devServer = {
     "/cloudServer": {
       target: "http://localhost:7007",
     },
-    "/parcelUtils": {
+    "/utils": {
       target: "http://localhost:7999",
     },
   }

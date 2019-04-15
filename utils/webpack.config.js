@@ -3,14 +3,14 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: {
-    parcelUtils: './src/index.js'
+    utils: './src/index.js'
   },
   output: {
     filename: '[name].js',
-    library: 'parcel-utils',
+    library: 'utils',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'parcelUtils/[name].[hash].js'
+    chunkFilename: 'utils/[name].[hash].js'
   },
   mode: 'production',
   module: {
@@ -38,7 +38,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: 'parcel-utils__[local]--[hash:base64:5]',
+              localIdentName: 'utils__[local]--[hash:base64:5]',
             },
           },
           {
@@ -54,6 +54,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules')],
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -61,7 +69,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: 'parcel-utils__[local]--[hash:base64:5]',
+              localIdentName: 'utils__[local]--[hash:base64:5]',
             },
           },
           'sass-loader',
@@ -85,12 +93,10 @@ module.exports = {
             // publicPath: '/appVue/',
         }
       },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader'}
     ]
   },
   resolve: {
-    // alias: {
-    //   'vue$': 'vue/dist/vue.esm.js'
-    // },
     extensions: [
       ".js", ".vue"
     ],
@@ -103,9 +109,5 @@ module.exports = {
     new VueLoaderPlugin()
   ],
   devtool: 'source-map',
-  externals: [
-    /^sing-spa-vue$/,
-    // /^vue$/,
-    // /.*element-ui.*$/
-  ]
+  externals: [/^vue$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa$/],
 }

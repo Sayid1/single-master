@@ -13,7 +13,7 @@
 
 <script>
 import Cities from '../components/Cities'
-// import { axiosInstance, ParcelButton } from 'parcelUtils!sofe'
+// import { axiosInstance, ParcelButton } from 'utils!sofe'
 
 export default {
   data() {

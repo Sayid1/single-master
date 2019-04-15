@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: E:\vscode_space\bs\parcelUtils\package.json: Unexpected token } in JSON at position 353
+  SyntaxError: E:\vscode_space\bs\utils\package.json: Unexpected token } in JSON at position 353
       at JSON.parse (<anonymous>)
       at C:\Users\iSayi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
       at Generator.next (<anonymous>)

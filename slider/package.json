@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.dev.js --port 7999",
-    "build:": "vue-cli-service build",
-    "build:bs": "webpack -p --progress"
+    "build": "webpack -p --progress --config ./webpack.config.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -15,14 +14,17 @@
     "axios": "^0.18.0",
     "element-ui": "^2.7.2",
     "single-spa-vue": "https://github.com/Sayid1/single-spa-vue.git",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@babel/plugin-syntax-dynamic-import": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.3",
     "@vue/cli-plugin-babel": "^3.5.5",
     "@vue/cli-service": "^3.5.3",
     "babel-loader": "^8.0.5",
+    "babel-plugin-component": "^1.1.1",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "dotenv-defaults": "^1.0.2",

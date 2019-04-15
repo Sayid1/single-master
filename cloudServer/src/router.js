@@ -10,7 +10,7 @@ export default new Router({
     {
       path: '/cloud-host',
       name: 'cloud-host',
-      component: () => import(/* webpackChunkName: "cloud-host" */ './pages/cloud-host.vue'),
+      component: () => import(/* webpackChunkName: "cloudServer.cloud-host" */ './pages/cloud-host.vue'),
     },
     // {
     //   path: '/cloud-host-add',
@@ -20,7 +20,7 @@ export default new Router({
     {
       path: '/mirror-image',
       name: 'mirror-image',
-      component: () => import(/* webpackChunkName: "mirror-image" */ './pages/mirror-image.vue'),
+      component: () => import(/* webpackChunkName: "cloudServer.mirror-image" */ './pages/mirror-image.vue'),
     },
   ]
 })

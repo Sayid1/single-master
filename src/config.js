@@ -2,7 +2,7 @@ import * as singleSpa from 'single-spa'
 import { loadApp } from './helper'
 import 'element-ui/lib/theme-chalk/index.css'
 import { storeInstance } from './globalStore'
-import { Loading } from 'parcelUtils!sofe'
+import { ElLoading  } from 'utils!sofe'
 
 async function init() {
   const loadingPromise = []
@@ -10,7 +10,7 @@ async function init() {
   loadingPromise.push(loadApp('header', true, '/header.js'))
   loadingPromise.push(loadApp('es', 'es', '/es.js'))
   loadingPromise.push(loadApp('cloudServer', 'cloudServer', '/cloudServer.js'))
-  loadingPromise.push(loadApp('parcelUtils', 'parcelUtils', '/parcelUtils.js'))
+  loadingPromise.push(loadApp('utils', 'utils', '/utils.js'))
   loadingPromise.push(loadApp('slider', true, '/slider.js'))
 
   await Promise.all(loadingPromise)
@@ -18,19 +18,19 @@ async function init() {
 }
 init()
 
-let hash = window.location.hash && window.location.hash.match(/(#\/.*?\/)/)[1] || null
+let hash = window.location.hash && window.location.hash.match(/\w+/)[0] || null
 let loading
 let loadedApp = new Set()
 
 function inheritRoute() {
   const uri = window.location.hash
-  const currentHash = uri.match(/(#\/.*?\/)/)[1] // eg: #/xx/
+  const currentHash = uri.match(/\w+/)[0]
 
   if (hash !== currentHash) {
     hash = currentHash
     return
   }
-  let newRoute = uri.replace(currentHash, '/')
+  let newRoute = uri.replace(`#/${currentHash}`, '')
   storeInstance.getState().vm._router.replace(newRoute)
 }
 
@@ -41,7 +41,7 @@ window.addEventListener('single-spa:app-change', () => {
   if (!hash) return
 
   const app = hash.match(/\w+/)[0]
-  if (!loadedApp.has(app)) loading = Loading.service({ text: '加载中...' })
+  if (!loadedApp.has(app)) loading = ElLoading.service({ text: '加载中...' })
   
   document.querySelector('#container').childNodes.forEach(e => {
     if (e && e.tagName === 'DIV' ) {

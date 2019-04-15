@@ -3,8 +3,6 @@
     klnll
     <div :class="$style.nav">
       <h1 :class="$style.h1">集群列表</h1>
-      <div ref="parcel"></div>
-      <div ref="parcel1"></div>
     </div>
     <div class="main-content">
       <Cities :cities="cities" />
@@ -26,7 +24,7 @@
 
 <script>
 import Cities from '../components/Cities'
-import { axiosInstance, ParcelButton, ParcelInput } from 'parcelUtils!sofe'
+import { axiosInstance } from 'utils!sofe'
 
 export default {
   data() {
@@ -34,29 +32,16 @@ export default {
       ...this.mapState('user'),
       cities: ['北京', '上海', '深圳', '广州'],
       a: 1,
-      vm: null
     }
   },
   components: {
     Cities,
   },
   mounted() {
-    ParcelButton.mount({
-      domElement: this.$refs.parcel,
-      store: this.reduxStore,
-      aa: this.a,
-      click:() =>{
-        this.vm.aa = 3
-      }
-    }).then(vm => {
-      this.vm = vm
-    })
-
-    ParcelInput.mount({domElement: this.$refs.parcel1})
   },
   methods: {
     xhr() {
-      axiosInstance.get('test').then(res => this.vm.aa = 2)
+      axiosInstance.get('test')
     }
   }
 }

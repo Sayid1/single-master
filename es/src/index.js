@@ -1,11 +1,17 @@
 import Vue from 'vue'
+// import { Input, ButtonGroup, Button, Table, Row}  from 'element-ui'
 import ElementUI  from 'element-ui'
 import singleSpaVue from 'single-spa-vue'
 import { connect } from 'redux-vuex'
 import App from './App.vue'
 import router from './router'
 
-Vue.use(ElementUI) // TODO 按需加载
+// Vue.use(Input)
+// Vue.use(ButtonGroup)
+// Vue.use(Button)
+// Vue.use(Table)
+// Vue.use(Row)
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({

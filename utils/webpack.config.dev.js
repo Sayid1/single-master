@@ -7,7 +7,7 @@ config.plugins.push(new webpack.NamedModulesPlugin())
 config.plugins.push(new webpack.HotModuleReplacementPlugin())
 config.plugins.push(new FriendlyErrorsWebpackPlugin({
   compilationSuccessInfo: {
-    messages: ['[parcel-utils] is running here http://localhost:7999'],
+    messages: ['[utils] is running here http://localhost:7999'],
     // notes: ['我是附加说明']
   },
   onErrors: (severity, errors) => {

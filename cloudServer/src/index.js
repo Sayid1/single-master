@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import { connect } from 'redux-vuex'
+// import { Input, ButtonGroup, Button, Table, Row}  from 'element-ui'
 import ElementUI  from 'element-ui'
 import singleSpaVue from 'single-spa-vue'
 import App from './App.vue'
 import router from './router'
 
-Vue.use(ElementUI) // TODO 按需加载
+// Vue.use(Input)
+// Vue.use(ButtonGroup)
+// Vue.use(Button)
+// Vue.use(Table)
+// Vue.use(Row)
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({
@@ -23,7 +29,6 @@ const vueLifecycles = singleSpaVue({
 export const bootstrap = [
   vueLifecycles.bootstrap,
 ]
-
 export function mount(props) {
   connect({
     Vue,
@@ -37,6 +42,7 @@ export function mount(props) {
   return vueLifecycles.mount({
     globalEventDistributor: props.globalEventDistributor
   }).then(vm => {
+    console.log(vm)
     props.globalEventDistributor.dispatch({
       type: 'VM',
       vm: vm

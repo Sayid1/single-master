@@ -1,5 +1,6 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: './src/common-deps.js',
@@ -23,7 +24,8 @@ module.exports = {
   },
   devtool: 'sourcemap',
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin('./build/common'),
+    new CompressionPlugin()
   ],
   module: {
     rules: [

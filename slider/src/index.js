@@ -1,9 +1,13 @@
 import Vue from 'vue'
+// import { Menu, MenuItem, Submenu }  from 'element-ui'
 import ElementUI  from 'element-ui'
 import singleSpaVue from 'single-spa-vue'
 import App from './App.vue'
 
-Vue.use(ElementUI )
+// Vue.use(Menu)
+// Vue.use(MenuItem)
+// Vue.use(Submenu)
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({

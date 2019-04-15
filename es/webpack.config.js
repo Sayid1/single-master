@@ -53,6 +53,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules')],
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -84,6 +92,7 @@ module.exports = {
           // publicPath: '/appVue/',
         }
       },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader'}
     ]
   },
   resolve: {
@@ -99,11 +108,7 @@ module.exports = {
     new VueLoaderPlugin()
   ],
   devtool: 'source-map',
-  externals: [
-    /^sing-spa-vue$/,
-    /\!sofe$/,
-    // /.*element-ui.*$/
-  ],
+  externals: [/^vue$/, /^vue-router$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa-vue$/, /^redux-vuex$/],
   optimization: {
     splitChunks: {
       automaticNameDelimiter: '/',

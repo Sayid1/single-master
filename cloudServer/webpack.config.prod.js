@@ -9,3 +9,5 @@ config.plugins.push(new Dotenv({
   defaults: true
 }))
 config.plugins.push(new CleanWebpackPlugin())
+
+module.exports = config

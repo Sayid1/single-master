@@ -24,7 +24,7 @@
 
 <script>
 import Cities from '../components/Cities'
-// import { axiosInstance, ParcelButton } from 'parcelUtils!sofe'
+// import { axiosInstance } from 'utils!sofe'
 
 export default {
   data() {
@@ -38,20 +38,9 @@ export default {
     Cities,
   },
   mounted() {
-    // ParcelButton.mount({
-    //   domElement: this.$refs.parcel,
-    //   globalEventDistributor: this.$root.globalEventDistributor,
-    //   aa: this.a,
-    //   click:() =>{
-    //     this.vm.aa = 3
-    //   }
-    // }).then(vm => {
-    //   this.vm = vm.instance
-    // })
   },
   methods: {
     xhr() {
-      this.vm.aa = 2
       // axiosInstance.get('test').then(res => console.log(res))
     }
   }

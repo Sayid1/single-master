@@ -1,5 +1,6 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   entry: {
@@ -54,6 +55,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules')],
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -82,15 +91,12 @@ module.exports = {
         loader: 'file-loader',
         options: {
             name: '[name].[ext]?[hash]',
-            // publicPath: '/appVue/',
         }
       },
+      { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader'}
     ]
   },
   resolve: {
-    // alias: {
-    //   'vue$': 'vue/dist/vue.esm.js'
-    // },
     extensions: [
       ".js", ".vue"
     ],
@@ -103,7 +109,5 @@ module.exports = {
     new VueLoaderPlugin(),
   ],
   devtool: 'source-map',
-  externals: [
-    /^sing-spa-vue$/,
-  ]
+  externals:  ['vue', 'element-ui', 'single-spa-vue']
 }
