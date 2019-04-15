@@ -10,7 +10,7 @@ module.exports = {
     library: 'es',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'es/[name].[hash].js'
+    chunkFilename: 'es/[name].[hash:8].js'
   },
   mode: 'production',
   module: {
@@ -108,7 +108,7 @@ module.exports = {
     new VueLoaderPlugin()
   ],
   devtool: 'source-map',
-  externals: [/^vue$/, /^vue-router$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa-vue$/, /^redux-vuex$/],
+  externals: [/^vue$/, /^vue-router$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa-vue$/],
   optimization: {
     splitChunks: {
       automaticNameDelimiter: '/',

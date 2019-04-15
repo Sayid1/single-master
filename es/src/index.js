@@ -1,16 +1,9 @@
 import Vue from 'vue'
-// import { Input, ButtonGroup, Button, Table, Row}  from 'element-ui'
 import ElementUI  from 'element-ui'
 import singleSpaVue from 'single-spa-vue'
-import { connect } from 'redux-vuex'
 import App from './App.vue'
 import router from './router'
 
-// Vue.use(Input)
-// Vue.use(ButtonGroup)
-// Vue.use(Button)
-// Vue.use(Table)
-// Vue.use(Row)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
@@ -32,10 +25,10 @@ export const bootstrap = [
 
 export function mount(props) {
 
-  connect({
-    Vue,
-    store: props.store
-  })
+  // connect({
+  //   Vue,
+  //   store: props.store
+  // })
   
   createDomElement()
   return vueLifecycles.mount({

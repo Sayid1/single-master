@@ -9,8 +9,7 @@ module.exports = {
     filename: '[name].js',
     library: 'utils',
     libraryTarget: 'amd',
-    path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'utils/[name].[hash].js'
+    path: path.resolve(__dirname, 'build')
   },
   mode: 'production',
   module: {
@@ -90,7 +89,6 @@ module.exports = {
         loader: 'file-loader',
         options: {
             name: '[name].[ext]?[hash]',
-            // publicPath: '/appVue/',
         }
       },
       { test: /\.(eot|svg|ttf|woff|woff2)$/, loader: 'file-loader'}

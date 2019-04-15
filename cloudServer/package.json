@@ -11,10 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
     "element-ui": "^2.7.2",
-    "redux": "^4.0.1",
-    "redux-vuex": "https://github.com/Sayid1/redux-vuex.git",
     "single-spa-vue": "https://github.com/Sayid1/single-spa-vue.git",
     "vue": "^2.6.10",
     "vue-router": "^3.0.2"
@@ -23,8 +20,6 @@
     "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
-    "@vue/cli-plugin-babel": "^3.5.5",
-    "@vue/cli-service": "^3.5.3",
     "babel-loader": "^8.0.5",
     "babel-plugin-component": "^1.1.1",
     "clean-webpack-plugin": "^2.0.1",

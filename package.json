@@ -4,8 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "add-all": "pkg=$pkg dep=$dep npm run add:es",
-    "add:es": "cd ./es/ && npm i $pkg -$dep",
     "install-all": "npm run install:config && npm run install:header && npm run install:slider && npm run install:cloudServer && npm run install:es && npm run install:utils",
     "install:config": "npm i",
     "install:header": "cd ./header/ && npm i",
@@ -13,7 +11,7 @@
     "install:cloudServer": "cd ./cloudServer/ && npm i",
     "install:es": "cd ./es/ && npm i",
     "install:utils": "cd ./utils/ && npm i",
-    "start": "concurrently --kill-others --kill-others-on-fail --prefix name --names \"config,deps,header,slider,utils\" \"npm run start:config\" \"npm run start:deps\" \"npm run start:header\" \"npm run start:slider\" \"npm run start:utils\" ",
+    "start": "concurrently --kill-others --kill-others-on-fail --prefix name --names \"config,deps,header,slider,utils\" \"npm run start:config\" \"npm run start:deps\" \"npm run start:header\" \"npm run start:slider\" \"npm run start:utils\" \"npm run start:es\" \"npm run start:cloudServer\" ",
     "start:deps": "webpack-dev-server --config ./webpack.config.deps.dev.js",
     "start:header": "cd ./header/ && webpack-dev-server --config ./webpack.config.dev.js",
     "start:slider": "cd ./slider/ && webpack-dev-server --config ./webpack.config.dev.js ",

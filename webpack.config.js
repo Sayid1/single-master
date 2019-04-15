@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 module.exports = {
   entry: './src/config.js',
   output: {
-    filename: 'config.js',
+    filename: 'config.[hash:8].js',
     library: 'config',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'build'),
@@ -72,5 +72,7 @@ module.exports = {
   externals: [
     /^single-spa$/,
     /\!sofe$/,
+    /^vue$/,
+    /^redux-vuex$/,
   ],
 }

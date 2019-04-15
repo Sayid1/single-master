@@ -10,7 +10,7 @@ module.exports = {
     library: 'cloudServer',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'cloudServer/[name].[hash].js'
+    chunkFilename: 'cloudServer/[name].[hash:8].js'
   },
   mode: 'production',
   module: {
@@ -109,5 +109,5 @@ module.exports = {
   ],
   devtool: 'source-map',
   
-  externals: [/^vue$/, /^vue-router$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa-vue$/, /^redux-vuex$/],
+  externals: [/^vue$/, /^vue-router$/, /.*element-ui.*/, /^.+!sofe$/, /^single-spa-vue$/],
 }

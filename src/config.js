@@ -1,8 +1,16 @@
+import Vue from 'vue'
+import { connect } from 'redux-vuex'
 import * as singleSpa from 'single-spa'
 import { loadApp } from './helper'
 import 'element-ui/lib/theme-chalk/index.css'
 import { storeInstance } from './globalStore'
 import { ElLoading  } from 'utils!sofe'
+
+
+connect({
+  Vue,
+  store: storeInstance
+})
 
 async function init() {
   const loadingPromise = []

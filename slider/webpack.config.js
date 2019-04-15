@@ -1,6 +1,5 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   entry: {
@@ -11,7 +10,7 @@ module.exports = {
     library: 'slider',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'build'),
-    chunkFilename: 'slider/[name].[hash].js'
+    chunkFilename: 'slider/[name].[hash:8].js'
   },
   mode: 'production',
   module: {
